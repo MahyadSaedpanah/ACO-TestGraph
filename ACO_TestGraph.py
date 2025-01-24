@@ -1,7 +1,9 @@
 import numpy as np
 import random
 
-# گراف نمونه به صورت ماتریس مجاورت
+
+# گراف نمونه به صورت ماتریس مجاورت با اسم شهرها
+cities = ["Tehran", "Mashhad", "Esfahan", "Shiraz", "Kurdistan"]
 graph = [
     [0, 2, 2, 5, 0],
     [2, 0, 3, 0, 3],
@@ -15,7 +17,7 @@ alpha = 1  # تاثیر فرمون
 beta = 2   # تاثیر فاصله
 rho = 0.5  # نرخ تبخیر فرمون
 num_ants = 5
-num_iterations = 30
+num_iterations = 100
 num_nodes = len(graph)
 
 # مقداردهی اولیه فرمون‌ها
@@ -83,12 +85,17 @@ def ant_colony_optimization():
 
         print(f"Iteration {iteration + 1}: Best cost = {best_cost}")
 
-    return best_path, best_cost
+    # تبدیل بهترین مسیر به نام شهرها
+    if best_path:
+        best_path_cities = [cities[node] for node in best_path]
+        return best_path_cities, best_cost
+    else:
+        return None, None
 
 # اجرای الگوریتم
 best_path, best_cost = ant_colony_optimization()
 if best_path:
-    print(f"Best Path: {best_path}")
+    print(f"Best Path: {' -> '.join(best_path)}")
     print(f"Best Cost: {best_cost}")
 else:
     print("No valid path found.")
