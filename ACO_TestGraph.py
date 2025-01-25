@@ -17,7 +17,7 @@ alpha = 1  # تاثیر فرمون
 beta = 2   # تاثیر فاصله
 rho = 0.5  # نرخ تبخیر فرمون
 num_ants = 5
-num_iterations = 100
+num_iterations = 40
 num_nodes = len(graph)
 
 # مقداردهی اولیه فرمون‌ها
